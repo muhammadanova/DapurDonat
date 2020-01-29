@@ -1,13 +1,33 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const Model = sequelize.Sequelize.Model
+
+  class User extends Model {}
+
+  User.init({
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
+    },
     username: DataTypes.STRING,
     password: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: {
+      type : DataTypes.STRING,
+      validate: {
+        isEmail : true
+      }
+    },
     isactive: DataTypes.INTEGER
-  }, {});
+  },
+  {
+    sequelize,
+    hooks: {}
+  })
+
   User.associate = function(models) {
-    // associations can be defined here
+    User.belongsToMany(models.Product, { through : 'Cart' })
   };
   return User;
 };

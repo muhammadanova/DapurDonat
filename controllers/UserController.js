@@ -1,12 +1,12 @@
 var CryptoJS = require("crypto-js");
 var sha256 = require("crypto-js/sha256");
 
-class Controller{
+class UserController{
     static home(req,res){
-        res.render('/')
+      res.render('/')
     }
     static loginForm(req,res){
-        res.render('/login')
+      res.render('frontend/index')
     }
     static login(req,res){
         User.findOne({
@@ -77,4 +77,4 @@ class Controller{
     }
 }
 
-module.exports = Controller
+module.exports = UserController

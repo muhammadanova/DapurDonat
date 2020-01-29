@@ -9,8 +9,8 @@ module.exports = {
       email: 'kevintan203@gmail.com',
       role: 'admin',
       isactive: 1,
-      createdAt: new Date,
-      updatedAt: new Date
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
       username: 'anova',
@@ -18,8 +18,8 @@ module.exports = {
       email: 'anovanurfaqih@gmail.com',
       role: 'admin',
       isactive: 1,
-      createdAt: new Date,
-      updatedAt: new Date
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
   ], {});
   },
