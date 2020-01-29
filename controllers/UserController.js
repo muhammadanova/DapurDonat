@@ -5,10 +5,10 @@ class UserController{
     static home(req,res){
       res.render('/')
     }
-    static loginForm(req,res){
+    static loginPage(req,res){
       res.render('/login')
     }
-    static login(req,res){
+    static doLogin(req,res){
         User.findOne({
             where:{
                 email: req.body.email,
