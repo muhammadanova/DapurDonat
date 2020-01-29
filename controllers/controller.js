@@ -27,7 +27,7 @@ class Controller{
             })
             .catch(err=>{
                 if(err == 'username/password is wrong'){
-                    res.render('',{err})
+                    res.render('/login',{err})
                 }else{
                     res.send(err)
                 }
