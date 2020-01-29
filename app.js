@@ -14,18 +14,3 @@ let transporter = nodemailer.createTransport({
   // }
 });
 
-let HelperOption = {
-  from: "Kevin Tan <dapurdonut@gmail.com",
-  to: ['kevintan203@gmail.com', 'anovanurfaqih@gmail.com'],
-  subject: 'Registrasi Dapur Donat',
-  html: 'MASUUUUUK WOIIII <a href="/confirm">CONFIRM REGIST</a>'
-}
-
-transporter.sendMail(HelperOption, (err, info) => {
-  if(err){
-    console.log(err)
-  }else{
-    console.log('ke kirim coy!')
-    console.log(info)
-  }
-})
