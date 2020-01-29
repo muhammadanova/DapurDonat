@@ -1,11 +1,13 @@
 var CryptoJS = require("crypto-js");
 var sha256 = require("crypto-js/sha256");
+let encriptedPassword = sha256("12345").toString(CryptoJS.enc.Base64);
+console.log(encriptedPassword)
 
 class UserController{
     static home(req,res){
       res.render('/')
     }
-    static loginForm(req,res){
+    static loginPage(req,res){
       res.render('frontend/index')
     }
     static login(req,res){
