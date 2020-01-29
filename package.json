@@ -1,0 +1,29 @@
+{
+  "name": "dapur-donut",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhammadanova/DapurDonat.git"
+  },
+  "author": "Kevin, Anova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muhammadanova/DapurDonat/issues"
+  },
+  "homepage": "https://github.com/muhammadanova/DapurDonat#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "flash": "^1.1.0",
+    "moment": "^2.24.0",
+    "nodemailer": "^6.4.2",
+    "pg": "^7.17.1",
+    "sequelize": "^5.21.3"
+  }
+}

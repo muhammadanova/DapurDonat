@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "dapur_donat",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
