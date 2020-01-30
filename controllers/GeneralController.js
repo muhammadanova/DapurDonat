@@ -13,6 +13,10 @@ class GeneralController {
     res.render('frontend/contacts/contactlist')
   }
 
+  static resetPassFormBefore(req, res){
+    res.render('frontend/resetpass/resetform')
+  }
+
   static confirmRegistration(req, res){
     res.send('test')
   }

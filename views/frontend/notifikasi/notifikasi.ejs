@@ -1,10 +1,10 @@
-<%- include('../layouts/headers', { page : 'resetpass' }) %>
+<%- include('../layouts/headers', { page : 'notifikasi' }) %>
 <section class="hero-wrap hero-wrap-2" style="background-image: url('/frontassets/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text align-items-end justify-content-center">
       <div class="col-md-9 ftco-animate text-center mb-4">
-        <h1 class="mb-2 bread">KONFIRMASI</h1>
+        <h1 class="mb-2 bread">NOTIFIKASI</h1>
       </div>
     </div>
   </div>
@@ -16,20 +16,11 @@
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4 tab-wrap text-center">
-          <h4 class="text-center mb-5">NEW PASSWORD</h4>
-          <form action="" method="POST">
-            <div class="form-group">
-              <label>New Password</label>
-              <input type="password" name="password" class="form-control" placeholder="Masukan Password Baru">
-            </div>
-            <div class="mb-3 mt-3">
-              <button type="submit" class="btn btn-dark">Reset Password</button>
-            </div>
-          </form>
+          <h4 class="text-center mb-5"><%= message %></h4>
         </div>
         <div class="col-md-4"></div>
       </div>
     </div>
   </div>
 </section>
-<%- include('../layouts/footers') %>
+<%- include('../layouts/footers') %></section>
