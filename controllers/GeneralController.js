@@ -17,6 +17,36 @@ class GeneralController {
     res.render('frontend/resetpass/resetform')
   }
 
+  static resetPassForm(req, res){
+    User.findOne({
+      where:{
+        email: req.body.email
+      }
+    })
+      .then(user=>{
+        if(user){
+          let HelperOption = {
+            from: "Dapur Donat <dapurdonut@gmail.com",
+            to: `${req.body.email}`,
+            subject: 'Reset Password Dapur Donat',
+            html: `<p>klik link untuk reset password <a href="https://rocky-citadel-20499.herokuapp.com/resetPassword/${req.body.email}">disini</a></p>`
+          }
+          transporter.sendMail(HelperOption, (err, info) => {
+            if(err){
+              console.log(`gagal kirim link reset password`)
+              throw `gagal kirim link reset password`
+            }else{
+              let encriptedPassword = sha256("Message").toString(CryptoJS.enc.Base64);
+              data.password = encriptedPassword
+              console.log(`sukses kirim link reset password`)
+            }
+          })
+        }else{
+          throw "email tidak terdaftar"
+        }
+      })
+    }
+
   static confirmRegistration(req, res){
     User.update(
       {
@@ -56,7 +86,27 @@ class GeneralController {
   }
 
   static resetPass(req, res){
-    res.send('test')
+    User.update(
+      {
+        password: req.body.password 
+      },
+      {
+        where:{
+          email: req.body.email
+        }
+      })
+      .then(result=>{
+        res.render('frontend/notifikasi/notifikasi',{message : 'silahkan cek email anda untuk reset password'})
+      })
+      .catch(err=>{
+        res.send(err)
+      })
+  }
+  static notifResetPass(req,res){
+    
+  }
+  static notifRegistrasi(req,res){
+    
   }
 }
 

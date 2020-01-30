@@ -58,6 +58,12 @@ router.get('/', GeneralController.home)
 router.get('/menus', GeneralController.menus)
 router.get('/contact', GeneralController.contact)
 router.get('/resetPassword', GeneralController.resetPassFormBefore)
+router.post('/resetPassword', GeneralController.resetPassBefore)
+
+// notif
+router.get('/notifikasiResetPass', GeneralController.notifResetPass)
+router.get('/notifikasiRegistrasi', GeneralController.notifRegistrasi)
+
 router.get('/resetPassword/:email', GeneralController.resetPassPage)
 router.post('/resetPassword/:email', GeneralController.resetPass)
 router.get('/confirmRegistration/:email', GeneralController.confirmRegistration)

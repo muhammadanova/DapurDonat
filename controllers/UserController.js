@@ -127,9 +127,7 @@ class UserController{
         }
       })
       .then(result=>{
-        let info = `link konfirmasi telah kami kirimkan ke email ${req.body.email}.`
-        res.render('/',{result})
-        console.log(result)
+        res.redirect('/notifikasiRegistrasi')
       })
       .catch(err=>{
         res.send(err)
