@@ -98,10 +98,6 @@ class UserController{
       })
     }
 
-    static registerPage(req,res){
-      res.render('backend/regis')
-    }
-
     static doRegister(req,res){
       let data = {
         username:req.body.username,
@@ -121,27 +117,25 @@ class UserController{
             from: "Dapur Donat <dapurdonut@gmail.com",
             to: `${req.body.email}`,
             subject: 'Registrasi Dapur Donat',
-            html: `<p>anda berhasil registrasi dengan email ${req.body.email} dan password ${req.body.password}</p>`
+            html: `<p>anda berhasil registrasi dengan email ${req.body.email}. klik link untuk konfirmasi <a href="https://rocky-citadel-20499.herokuapp.com/confirmRegistration/${req.body.email}">disini</a></p>`
           }
           transporter.sendMail(HelperOption, (err, info) => {
             if(err){
               console.log(`gagal registrasi`)
               throw `gagal registrasi`
             }else{
+              let encriptedPassword = sha256("Message").toString(CryptoJS.enc.Base64);
+              data.password = encriptedPassword
               console.log(`sukses registrasi`)
+              return User.create(data)
             }
           })
-          let encriptedPassword = sha256("Message").toString(CryptoJS.enc.Base64);
-          data.password = encriptedPassword
-          // return User.create(data)
         }else{
           throw (`email ${req.body.email} sudah terdaftar`)
         }
       })
       .then(result=>{
-        let info = `link konfirmasi telah kami kirimkan ke email ${req.body.email}.`
-        res.render('backend/regis',{result})
-        console.log(result)
+        res.redirect('/notifikasiRegistrasi')
       })
       .catch(err=>{
         res.send(err)
