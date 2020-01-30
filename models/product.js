@@ -12,8 +12,28 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: Sequelize.INTEGER
     },
-    name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
+    name: {
+      type: DataTypes.STRING,
+      validation: {
+        notEmpty: {
+          args: true,
+          msg: `please fill the product name`
+        },
+      }
+    },
+    price:{
+      type: DataTypes.INTEGER,
+      validation: {
+        notEmpty: {
+          args: true,
+          msg: `please fill the product name`
+        },
+        min: {
+          args: 1,
+          msg: `min price is 1`
+        }
+      }
+    },
     rating: DataTypes.INTEGER,
     desc: DataTypes.STRING,
     images_product: DataTypes.STRING

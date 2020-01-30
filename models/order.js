@@ -6,19 +6,22 @@ module.exports = (sequelize, DataTypes) => {
   class Order extends Model {}
 
   Order.init({
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      username: DataTypes.STRING,
+      email: DataTypes.STRING,
+      products_name: DataTypes.STRING,
+      quantities: DataTypes.INTEGER,
+      total_price: DataTypes.INTEGER,
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
     },
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    products_name: DataTypes.STRING,
-    quantities: DataTypes.INTEGER,
-    total_price: DataTypes.INTEGER,
-    status: DataTypes.BOOLEAN
-  },
   {
     sequelize,
     hooks: {}
