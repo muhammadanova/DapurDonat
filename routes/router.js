@@ -57,6 +57,7 @@ router.get('/admin/product/delete/:id', isLoginAdmin, adminOnly, PanelController
 router.get('/', GeneralController.home)
 router.get('/menus', GeneralController.menus)
 router.get('/contact', GeneralController.contact)
+router.get('/resetPassword', GeneralController.resetPassFormBefore)
 router.get('/resetPassword/:email', GeneralController.resetPassPage)
 router.post('/resetPassword/:email', GeneralController.resetPass)
 router.get('/confirmRegistration/:email', GeneralController.confirmRegistration)
