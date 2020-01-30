@@ -12,6 +12,18 @@ class GeneralController {
   static contact(req, res){
     res.render('frontend/contacts/contactlist')
   }
+
+  static confirmRegistration(req, res){
+    res.send('test')
+  }
+
+  static resetPassPage(req, res){
+    res.render('frontend/resetpass/resetpass')
+  }
+
+  static resetPass(req, res){
+    res.send('test')
+  }
 }
 
 module.exports = GeneralController
