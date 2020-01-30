@@ -1,0 +1,36 @@
+<%- include('../layouts/headers', { page: 'product_list' }) %>
+  <div class="col-md-10 content">
+    <div class="panel panel-default">
+      <div class="panel-heading">Dashboard</div>
+      <div class="panel-body">
+        <h2 class="ml-3 mb-3">EDIT PRODUCT</h2>
+        <form action="" method="POST">
+          <div class="form-group col-md-6">
+            <label for="name">Name Product</label>
+            <input type="text" name="name" value="<%= product.name %>" class="form-control" id="name">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="price">Price</label>
+            <input type="text" name="price" value="<%= product.price %>" class="form-control" id="price">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="rating">Rating</label>
+            <input type="number" name="rating" value="<%= product.rating %>" class="form-control" id="rating">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="image">Image File</label>
+            <input type="file" name="img" value="" class="form-control-file" id="image">
+          </div>
+          <div class="form-group col-md-12">
+            <label for="desc">Description</label>
+            <textarea name="desc" class="form-control" style="resize:none;" id="desc" rows="5"><%= product.desc %></textarea>
+          </div>
+          <div class="ml-3">
+            <button type="submit" class="btn btn-primary">Edit Product</button>
+            <a href="/admin/product" class="btn btn-danger" data-dismiss="modal">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<%- include('../layouts/footers') %>

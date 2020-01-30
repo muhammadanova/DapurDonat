@@ -1,0 +1,90 @@
+<%- include('../layouts/headers', { page: 'product_list' }) %>
+  <div class="col-md-10 content">
+    <div class="panel panel-default">
+      <div class="panel-heading">PRODUCTS</div>
+      <div class="panel-body">
+        <h2 class="mb-3">PRODUCT LIST</h2>
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addProduct"><i class="fa fa-plus"></i>&nbsp;Add Product</button>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th width="5%">No</th>
+              <th width="15%">Image</th>
+              <th width="20%">Name Product</th>
+              <th width="15%">Price</th>
+              <th width="15%">Rating</th>
+              <th width="20%">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if(products.length === 0){ %>
+              <tr>
+                <td colspan="6" class="text-center">
+                  <h4 class="mb-5 mt-5">
+                    NO DATA
+                  </h4>
+                </td>
+              </tr>
+            <% }else{ %>
+              <% products.map((el, index) => { %>
+                <tr>
+                  <td><%= index+=1 %></td>
+                  <td></td>
+                  <td><%= el.name %></td>
+                  <td><%= el.price %></td>
+                  <td><%= el.rating %></td>
+                  <td>
+                    <a href="/admin/product/edit/1" class="btn btn-warning"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
+                    <a href="/admin/product/delete/1" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;Delete</a>
+                  </td>
+                </tr>
+              <% }) %>
+            <% } %>
+          </tbody>
+        </table>
+        <div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="" method="POST">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="name">Name Product</label>
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Name Product">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="price">Price</label>
+                      <input type="text" class="form-control" id="price" placeholder="Price">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="rating">Rating</label>
+                      <input type="number" class="form-control" id="rating" placeholder="Rating">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="image">Image File</label>
+                      <input type="file" name="img" class="form-control-file" id="image" placeholder="File Image">
+                    </div>
+                    <div class="form-group col-md-12">
+                      <label for="desc">Description</label>
+                      <textarea name="desc" class="form-control" style="resize:none;" id="desc" rows="5" placeholder="Description"></textarea>
+                    </div>
+                  </div>
+                  <div class="ml-3">
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%- include('../layouts/footers') %>

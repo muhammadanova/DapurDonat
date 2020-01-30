@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Admin Panel Dapur Donat</title>
+  <link rel="stylesheet" href="/style-dashboard.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">MENU</button>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/admin/dashboard">Admin Panel</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/" target="_blank">Website</a></li>
+          <li class="dropdown ">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>  	
+  <div class="container-fluid main-container">
+    <div class="col-md-2 sidebar">
+      <div class="row">
+	      <div class="absolute-wrapper"></div>
+        <div class="side-menu">
+          <nav class="navbar navbar-default" role="navigation">
+            <div class="side-menu-container">
+              <ul class="nav navbar-nav">
+                <li class="<%= page === 'dashboard' ? 'active' : '' %>"><a href="/admin/dashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+                <li class="panel panel-default" id="dropdown">
+                  <a data-toggle="collapse" href="#product">
+                    <span class="glyphicon glyphicon-list-alt"></span>Features<span class="caret"></span>
+                  </a>
+                  <div id="product" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <ul class="nav navbar-nav">
+                        <li class="<%= page === 'user_list' ? 'active' : '' %>"><a href="/admin/user">Users</a></li>
+                        <li class="<%= page === 'product_list' ? 'active' : '' %>"><a href="/admin/product">Products</a></li>
+                        <!-- Dropdown level 2 -->
+                        <!-- <li class="panel panel-default" id="dropdown">
+                          <a data-toggle="collapse" href="#sub-menu">
+                            <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+                          </a>
+                          <div id="sub-menu" class="panel-collapse collapse">
+                            <div class="panel-body">
+                              <ul class="nav navbar-nav">
+                                <li><a href="#">Link</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>  		
+    </div>

@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.Sequelize.Model
+  const Sequelize = sequelize.Sequelize
+  const Model = Sequelize.Model
 
   class Order extends Model {}
 
@@ -15,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     products_name: DataTypes.STRING,
     quantities: DataTypes.INTEGER,
-    total_price: DataTypes.INTEGER
+    total_price: DataTypes.INTEGER,
+    status: DataTypes.BOOLEAN
   },
   {
     sequelize,

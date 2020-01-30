@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.Sequelize.Model
+  const Sequelize = sequelize.Sequelize
+  const Model = Sequelize.Model
 
   class User extends Model {}
 
@@ -19,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         isEmail : true
       }
     },
+    role: DataTypes.STRING,
     isactive: DataTypes.INTEGER
   },
   {

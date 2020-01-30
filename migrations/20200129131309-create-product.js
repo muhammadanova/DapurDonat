@@ -11,9 +11,6 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      slug_product: {
-        type: Sequelize.STRING
-      },
       price: {
         type: Sequelize.INTEGER
       },
@@ -23,7 +20,7 @@ module.exports = {
       desc: {
         type: Sequelize.STRING
       },
-      img: {
+      images_product: {
         type: Sequelize.STRING
       },
       createdAt: {
