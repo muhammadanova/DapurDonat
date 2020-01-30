@@ -115,8 +115,8 @@ class GeneralController {
     
   }
 
-  static notifRegistrasi(req,res){
-    
+  static notifRegistrasi(req, res){
+    res.render('frontend/notifikasi/notifikasi', { message : ''})
   }
 }
 

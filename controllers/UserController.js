@@ -98,49 +98,53 @@ class UserController{
       })
     }
 
-    static doRegister(req,res){
-      let data = {
-        username:req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-        role: 'member',
-        isactive: 0
-      }
+    static checkEmailAlready(email){
       User.findOne({
-        where:{
-          email: req.body.email
+        where : {
+          email : email
         }
       })
-      .then(user=>{
-        if(!user){
-          let HelperOption = {
-            from: "Dapur Donat <dapurdonut@gmail.com",
-            to: `${req.body.email}`,
-            subject: 'Registrasi Dapur Donat',
-            html: `<p>anda berhasil registrasi dengan email ${req.body.email}. klik link untuk konfirmasi <a href="https://rocky-citadel-20499.herokuapp.com/confirmRegistration/${req.body.email}">disini</a></p>`
-          }
-          transporter.sendMail(HelperOption, (err, info) => {
-            if(err){
-              console.log(`gagal registrasi`)
-              throw `gagal registrasi`
-            }else{
-              let encriptedPassword = sha256("Message").toString(CryptoJS.enc.Base64);
-              data.password = encriptedPassword
-              console.log(`sukses registrasi`)
-              return User.create(data)
-            }
-          })
-        }else{
-          throw (`email ${req.body.email} sudah terdaftar`)
-        }
+      .then(result => {
+        return true
       })
-      .then(result=>{
-        res.redirect('/notifikasiRegistrasi')
-      })
-      .catch(err=>{
-        res.send(err)
+      .catch(err => {
+        return false
       })
     }
+
+    static doRegister(req,res){
+      let objData = {
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        role: 'member',
+        isactive: 0,
+      }
+      let HelperOption = {
+        from: "Dapur Donat <dapurdonut@gmail.com",
+        to: `${req.body.email}`,
+        subject: 'Registrasi Dapur Donat',
+        html: `<p>anda berhasil registrasi dengan email ${req.body.email}. klik link untuk konfirmasi <a href="https://rocky-citadel-20499.herokuapp.com/confirmRegistration/${req.body.email}">disini</a></p>`
+      }
+      transporter.sendMail(HelperOption, (err, info) => {
+        if(err){
+          console.log(`gagal registrasi`)
+          throw `gagal registrasi`
+        }else{
+          res.send(info)
+        }
+      })
+      User.create(objData)
+        .then(result => {
+          console.log('masuk sini')
+          res.render('frontend/notifikasi/notifikasi', { message : `Selamat anda berhasil registrasi, silahkan anda cek EMAIL anda untuk melakukan konfirmasi registrasi anda` })
+        })
+        .catch(err => {
+          console.log('masuk')
+          res.send(err)
+        })
+    }
+
     static recoveryPasswordPage(req,res){
       res.render('backend/pass')
     }
