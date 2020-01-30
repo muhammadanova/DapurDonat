@@ -88,7 +88,7 @@ class UserController{
           })
           let encriptedPassword = sha256("Message").toString(CryptoJS.enc.Base64);
           data.password = encriptedPassword
-          // return User.create(data)
+          return User.create(data)
         }else{
           throw (`email ${req.body.email} sudah terdaftar`)
         }
