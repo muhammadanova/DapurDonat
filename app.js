@@ -7,6 +7,7 @@ const session = require('express-session')
 const router = require('./routes/router')
 
 app.use(express.static('public'))
+app.use(express.static(__dirname))
 app.use(express.urlencoded({ extended : true }))
 app.use(flash())
 app.use(cookieParser('secret'))

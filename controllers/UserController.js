@@ -23,6 +23,7 @@ class UserController{
           if(user){
             if(user.isactive === 1){
               req.session.user = {
+                id: user.id,
                 name: user.username,
                 email: user.email,
                 role: user.role
@@ -55,10 +56,12 @@ class UserController{
     static doLoginMember(req, res){
       User.findOne({
         where: {
-          email : req.body.email
+          email : req.body.email,
+          role: 'member'
         }
       })
       .then(cekpass => {
+        
         if(bcrypt.compareSync(req.body.password, cekpass.password)){
           return cekpass
         }else{
@@ -69,6 +72,7 @@ class UserController{
         if(user){
           if(user.isactive === 1){
             req.session.user = {
+              id: user.id,
               name: user.username,
               email: user.email,
               role: user.role

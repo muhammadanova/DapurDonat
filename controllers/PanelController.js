@@ -2,15 +2,15 @@ const { User, Product, Order } = require('../models')
 
 class PanelController {
   static dashboard(req, res){
-    console.log(req.session)
     res.render('backend/dashboard')
   }
 
   static userList(req, res){
     User
-      .findAll()
+      .findAll({
+        order: [['createdAt', 'DESC']]
+      })
       .then(users => {
-        console.log(users)
         res.render('backend/users/list', { users })
       })
       .catch(err => {
@@ -19,7 +19,9 @@ class PanelController {
   }
 
   static productList(req, res){
-    Product.findAll()
+    Product.findAll({
+        order: [['id', 'ASC']]
+      })
       .then(products => {
         res.render('backend/products/list', { products })
       })
@@ -29,7 +31,23 @@ class PanelController {
   }
 
   static addProduct(req, res){
+    console.log(req.body)
+    console.log(req.file.path)
+    let objData = {
+      name: req.body.name,
+      price: Number(req.body.price),
+      rating: Number(req.body.rating),
+      desc: req.body.desc,
+      images_product: req.file.path
+    }
 
+    Product.create(objData)
+      .then(products => {
+        res.redirect('/admin/product')
+      })
+      .catch(err => {
+        res.send(err)
+      })
   }
 
   static editProductForm(req, res){
@@ -47,9 +65,8 @@ class PanelController {
     const id_product = Number(req.params.id)
     let objData = {
       name: req.body.name,
-      price: req.body.price,
-      rating: req.body.rating,
-      img: req.body.img,
+      price: Number(req.body.price),
+      rating: Number(req.body.rating),
       desc: req.body.desc
     }
 

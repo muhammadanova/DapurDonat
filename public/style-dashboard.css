@@ -169,6 +169,10 @@ margin-left: 310px;
   margin-top: 3rem !important;
 }
 
+.img-product{
+  width: 90px;
+}
+
 .modal-header .close{
   margin-top: -20px !important;
 }

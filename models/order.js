@@ -6,25 +6,23 @@ module.exports = (sequelize, DataTypes) => {
   class Order extends Model {}
 
   Order.init({
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
       username: DataTypes.STRING,
       email: DataTypes.STRING,
       products_name: DataTypes.STRING,
       quantities: DataTypes.INTEGER,
       total_price: DataTypes.INTEGER,
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
+      address: {
+        type : DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            args: true,
+            msg: 'Address harus di input'
+          }
+        }
+      }
     },
   {
-    sequelize,
-    hooks: {}
+    sequelize
   })
   
   Order.associate = function(models) {};

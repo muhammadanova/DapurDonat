@@ -13,13 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       type: Sequelize.INTEGER
     },
     ProductId: DataTypes.INTEGER,
-    UserId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    quantity: DataTypes.INTEGER
   }, 
   {
     sequelize,
     hooks: {}
   })
 
-  Cart.associate = function(models) {};
+  Cart.associate = function(models) {
+    Cart.belongsTo(models.Product)
+  };
   return Cart;
 };

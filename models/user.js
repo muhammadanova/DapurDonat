@@ -51,7 +51,9 @@ module.exports = (sequelize, DataTypes) => {
   {
     hooks: {
       beforeCreate:(user, options) => {
-        user.password = bcrypt.genSaltSync(saltRounds);
+        var salt = bcrypt.genSaltSync(saltRounds);
+        var hash = bcrypt.hashSync(user.password, salt);
+        user.password = hash
       }
     },
     sequelize
@@ -59,6 +61,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     User.belongsToMany(models.Product, { through : 'Cart' })
+    User.hasMany(models.Cart)
   };
   return User;
 };

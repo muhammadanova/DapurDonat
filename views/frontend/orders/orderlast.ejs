@@ -1,0 +1,77 @@
+<%- include('../layouts/headers', { page : 'orderlast' }) %>
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/images/bg7.jpg');" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-end justify-content-center">
+      <div class="col-md-9 ftco-animate text-center mb-4">
+        <h1 class="mb-2 bread">Menu List</h1>
+        <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Menu List <i class="ion-ios-arrow-forward"></i></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="security">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <img src="/assets/secure.jpg" class="secure-img">
+        <div class="content-secure">
+          <p>Silahkan anda melakukan transfer terlebih dahulu kepada rekening di bawah ini</p>
+          <p>Mohon jaga kerahasiaan anda agar tidak menjadi suatu kesalahan saat transaksi</p>
+          <p>Silahkan transfer sesuai dengan nominal hingga 3 digit belakang</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mb-5">
+  <table class="table table-bordered text-center">
+    <thead>
+      <tr>
+        <th width="20%">Email</th>
+        <th width="20%">Products</th>
+        <th width="20%">Total Quantities</th>
+        <th width="20%">Total Price</th>
+        <th width="20%">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= order.email %></td>
+        <td><%= order.products_name %></td>
+        <td><%= order.quantities %></td>
+        <td><%= order.total_price %></td>
+        <td><%= order.address %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container atm">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="/assets/bca.jpg" class="img-atm">
+        <h6>An. Dapur Donat</h6>
+        <h5>45732432087403</h5>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="/assets/bni.png" class="img-atm">
+        <h6>An. Dapur Donat</h6>
+        <h5>76768932432443</h5>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="/assets/bri.jpg" class="img-atm">
+        <h6>An. Dapur Donat</h6>
+        <h5>59468953455455</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container text-center sudah-transfer">
+  <a href="/" class="btn btn-success sudah-tf">Sudah Transfer</a>
+</div>
+<%- include('../layouts/footers') %>

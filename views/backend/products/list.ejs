@@ -29,13 +29,13 @@
               <% products.map((el, index) => { %>
                 <tr>
                   <td><%= index+=1 %></td>
-                  <td></td>
+                  <td><img src="/<%= el.images_product %>" class="img-product"></td>
                   <td><%= el.name %></td>
                   <td><%= el.price %></td>
                   <td><%= el.rating %></td>
                   <td>
-                    <a href="/admin/product/edit/1" class="btn btn-warning"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
-                    <a href="/admin/product/delete/1" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;Delete</a>
+                    <a href="/admin/product/edit/<%= el.id %>" class="btn btn-warning"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
+                    <a href="/admin/product/delete/<%= el.id %>" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;Delete</a>
                   </td>
                 </tr>
               <% }) %>
@@ -52,7 +52,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="name">Name Product</label>
@@ -60,15 +60,15 @@
                     </div>
                     <div class="form-group col-md-6">
                       <label for="price">Price</label>
-                      <input type="text" class="form-control" id="price" placeholder="Price">
+                      <input type="text" name="price" class="form-control" id="price" placeholder="Price">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="rating">Rating</label>
-                      <input type="number" class="form-control" id="rating" placeholder="Rating">
+                      <input type="number" name="rating" class="form-control" id="rating" placeholder="Rating">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="image">Image File</label>
-                      <input type="file" name="img" class="form-control-file" id="image" placeholder="File Image">
+                      <input type="file" name="images_product" class="form-control-file" id="image" placeholder="File Image">
                     </div>
                     <div class="form-group col-md-12">
                       <label for="desc">Description</label>
