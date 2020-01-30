@@ -14,7 +14,37 @@ class GeneralController {
   }
 
   static confirmRegistration(req, res){
-    res.send('test')
+    User.update(
+      {
+        isactive: 1
+      },
+      {
+        where:{
+          email: req.body.email
+        }
+      })
+      .then(result=>{
+        let HelperOption = {
+          from: "Dapur Donat <dapurdonut@gmail.com",
+          to: `${req.body.email}`,
+          subject: 'Registrasi Dapur Donat',
+          html: `<p>anda berhasil konfirmasi pendaftaran. silahkan login di <a href="https://rocky-citadel-20499.herokuapp.com">disini</a></p>`
+        }
+        transporter.sendMail(HelperOption, (err, info) => {
+          if(err){
+            console.log(`gagal registrasi`)
+            throw `gagal registrasi`
+          }else{
+            let encriptedPassword = sha256("Message").toString(CryptoJS.enc.Base64);
+            data.password = encriptedPassword
+            console.log(`sukses registrasi`)
+            return User.create(data)
+          }
+        })
+      })
+      .catch(err=>{
+        res.send('email tidak terdaftar')
+      })
   }
 
   static resetPassPage(req, res){
