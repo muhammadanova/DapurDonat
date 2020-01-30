@@ -2,6 +2,7 @@ const { User, Product, Order } = require('../models')
 
 class PanelController {
   static dashboard(req, res){
+    console.log(req.session)
     res.render('backend/dashboard')
   }
 

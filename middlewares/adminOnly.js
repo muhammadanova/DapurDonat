@@ -4,9 +4,9 @@ module.exports = (req, res, next) => {
       next()
     }else{
       req.flash('error', 'Gagal, Anda bukan sebagai admin')
-      res.redirect('/contact/list')
+      res.redirect('/admin/dashboard')
     }
   }else{
-    res.redirect('/login')
+    res.redirect('/admin/login')
   }
 }
