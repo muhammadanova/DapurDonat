@@ -1,3 +1,5 @@
+const { User, Product, Order } = require('../models')
+
 class GeneralController {
   static home(req, res){
     res.render('frontend/index')
