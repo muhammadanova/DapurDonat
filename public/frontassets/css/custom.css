@@ -1,3 +1,17 @@
 .logo-header{
   width: 200px;
 }
+
+.btn-minus,
+.btn-plus{
+  padding-top: 0.8rem;
+}
+
+.width50{
+  width: 50% !important;
+  margin: 0 auto;
+}
+
+.pl-20{
+  padding-left: 20px !important;
+}

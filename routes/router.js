@@ -40,6 +40,7 @@ router.get('/admin/logout', isLoginAdmin, adminOnly, UserController.doLogout)
 
 // USER UNTUK MEMBER
 router.post('/user/login', UserController.doLoginMember)
+router.get('/user/logout', UserController.doLogoutMember)
 
 // PANEL CONTROLLER
 router.get('/admin/dashboard', isLoginAdmin, adminOnly, PanelController.dashboard)
@@ -59,5 +60,7 @@ router.get('/resetPassword', GeneralController.resetPassFormBefore)
 router.get('/resetPassword/:email', GeneralController.resetPassPage)
 router.post('/resetPassword/:email', GeneralController.resetPass)
 router.get('/confirmRegistration', GeneralController.confirmRegistration)
+
+router.get('/cart', GeneralController.listCart)
 
 module.exports = router

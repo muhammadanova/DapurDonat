@@ -17,7 +17,7 @@ app.use(session({
 }))
 app.set('view engine', 'ejs')
 app.locals.moment = require('moment')
-app.locals.user = {}
+app.locals.user = null
 
 app.use(router)
 

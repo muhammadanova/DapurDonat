@@ -47,12 +47,12 @@ class UserController{
 
     static doLogout(req, res){
       req.session.destroy(err => {
+        req.app.locals.user = null
         res.redirect('/admin/login')
       })
     }
 
     static doLoginMember(req, res){
-      console.log(req.body)
       User.findOne({
         where: {
           email : req.body.email
@@ -88,6 +88,13 @@ class UserController{
         }else{
           res.render('frontend/index')
         }
+      })
+    }
+
+    static doLogoutMember(req, res){
+      req.session.destroy(err => {
+        req.app.locals.user = null
+        res.redirect('/')
       })
     }
 
