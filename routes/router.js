@@ -30,11 +30,17 @@ router.post('/', function (req, res) {
   })
 })
 
+
+
 // BACK END CMS //
-// USER CONTROLLER
+// USER UNTUK ADMIN
 router.get('/admin/login', UserController.loginPage)
 router.post('/admin/login', UserController.doLogin)
 router.get('/admin/logout', isLoginAdmin, adminOnly, UserController.doLogout)
+
+// USER UNTUK MEMBER
+router.post('/user/login', UserController.doLoginMember)
+
 // PANEL CONTROLLER
 router.get('/admin/dashboard', isLoginAdmin, adminOnly, PanelController.dashboard)
 router.get('/admin/user', isLoginAdmin, adminOnly, PanelController.userList)
@@ -49,5 +55,8 @@ router.get('/admin/product/delete/:id', isLoginAdmin, adminOnly, PanelController
 router.get('/', GeneralController.home)
 router.get('/menus', GeneralController.menus)
 router.get('/contact', GeneralController.contact)
+router.get('/resetPassword/:email', GeneralController.resetPassPage)
+router.post('/resetPassword/:email', GeneralController.resetPass)
+router.get('/confirmRegistration', GeneralController.confirmRegistration)
 
 module.exports = router

@@ -7,7 +7,6 @@ class UserController{
       res.render('backend/login')
     }
     static doLogin(req,res){
-      console.log(req.body)
       User.findOne({
           where:{
             email: req.body.email
@@ -38,7 +37,6 @@ class UserController{
           }
         })
         .catch(err=>{
-          console.log('sini')
           if(err == 'username/password is wrong'){
             res.render('backend/login', { err })
           }else{
@@ -50,6 +48,46 @@ class UserController{
     static doLogout(req, res){
       req.session.destroy(err => {
         res.redirect('/admin/login')
+      })
+    }
+
+    static doLoginMember(req, res){
+      console.log(req.body)
+      User.findOne({
+        where: {
+          email : req.body.email
+        }
+      })
+      .then(cekpass => {
+        if(bcrypt.compareSync(req.body.password, cekpass.password)){
+          return cekpass
+        }else{
+          throw 'username/password is wrong'
+        }
+      })
+      .then(user => {
+        if(user){
+          if(user.isactive === 1){
+            req.session.user = {
+              name: user.username,
+              email: user.email,
+              role: user.role
+            }
+            req.app.locals.user = req.session.user
+            res.redirect('/')  
+          }else{
+            throw `please confirm your registration in your mailbox that we sent to ${user.email}`
+          }
+        }else{
+          throw 'username/password is wrong'
+        }
+      })
+      .catch(err=>{
+        if(err == 'username/password is wrong'){
+          res.render('frontend/index')
+        }else{
+          res.render('frontend/index')
+        }
       })
     }
 
