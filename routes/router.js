@@ -20,13 +20,13 @@ router.get('/user/logout', UserController.doLogoutMember)
 router.post('/user/registration', UserController.doRegister)
 
 // PANEL CONTROLLER
-router.get('/admin/dashboard', PanelController.dashboard)
-router.get('/admin/user', PanelController.userList)
-router.get('/admin/product', PanelController.productList)
-router.post('/admin/product', upload.single('images_product'), PanelController.addProduct)
-router.get('/admin/product/edit/:id', PanelController.editProductForm)
-router.post('/admin/product/edit/:id', PanelController.editProduct)
-router.get('/admin/product/delete/:id', PanelController.deleteProduct)
+router.get('/admin/dashboard', isLoginAdmin, adminOnly, PanelController.dashboard)
+router.get('/admin/user', isLoginAdmin, adminOnly, PanelController.userList)
+router.get('/admin/product', isLoginAdmin, adminOnly, PanelController.productList)
+router.post('/admin/product', isLoginAdmin, adminOnly, upload.single('images_product'), PanelController.addProduct)
+router.get('/admin/product/edit/:id', isLoginAdmin, adminOnly, PanelController.editProductForm)
+router.post('/admin/product/edit/:id', isLoginAdmin, adminOnly, PanelController.editProduct)
+router.get('/admin/product/delete/:id', isLoginAdmin, adminOnly, PanelController.deleteProduct)
 
 // FRONT END //
 // GENERAL CONTROLLER
