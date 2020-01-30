@@ -5,5 +5,20 @@
     "database": "dapur_donat",
     "host": "localhost",
     "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "swjyjepmyenqre",
+    "password": "2bf6d2d8b0dd3161e6bcc7cd9ceb995fab0b9d75f3a517a3af96259ae6895fd4",
+    "database": "dd8c0spip8v0jn",
+    "host": "ec2-54-174-221-35.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }

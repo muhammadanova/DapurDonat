@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.Sequelize.Model
+  const Sequelize = sequelize.Sequelize
+  const Model = Sequelize.Model
 
   class Product extends Model {}
 
@@ -11,9 +12,29 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: Sequelize.INTEGER
     },
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validation: {
+        notEmpty: {
+          args: true,
+          msg: `please fill the product name`
+        },
+      }
+    },
     slug_product: DataTypes.STRING,
-    price: DataTypes.INTEGER,
+    price:{
+      type: DataTypes.INTEGER,
+      validation: {
+        notEmpty: {
+          args: true,
+          msg: `please fill the product name`
+        },
+        min: {
+          args: 1,
+          msg: `min price is 1`
+        }
+      }
+    },
     rating: DataTypes.INTEGER,
     desc: DataTypes.STRING,
     img: DataTypes.STRING

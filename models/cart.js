@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.Sequelize.Model
+  const Sequelize = sequelize.Sequelize
+  const Model = Sequelize.Model
 
   class Cart extends Model {}
 
