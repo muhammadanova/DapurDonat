@@ -28,7 +28,7 @@ class UserController{
                 email: user.email,
                 role: user.role
               }
-              console.log(req.session)
+              req.app.locals.user = req.session.user
               res.redirect('/admin/dashboard')  
             }else{
               throw `please confirm your registration in your mailbox that we sent to ${user.email}`

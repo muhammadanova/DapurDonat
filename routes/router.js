@@ -30,7 +30,12 @@ router.post('/', function (req, res) {
   })
 })
 
-//BACK END CMS
+// BACK END CMS //
+// USER CONTROLLER
+router.get('/admin/login', UserController.loginPage)
+router.post('/admin/login', UserController.doLogin)
+router.get('/admin/logout', isLoginAdmin, adminOnly, UserController.doLogout)
+// PANEL CONTROLLER
 router.get('/admin/dashboard', isLoginAdmin, adminOnly, PanelController.dashboard)
 router.get('/admin/user', isLoginAdmin, adminOnly, PanelController.userList)
 router.get('/admin/product', isLoginAdmin, adminOnly, PanelController.productList)
@@ -39,12 +44,10 @@ router.get('/admin/product/edit/:id', isLoginAdmin, adminOnly, PanelController.e
 router.post('/admin/product/edit/:id', isLoginAdmin, adminOnly, PanelController.editProduct)
 router.get('/admin/product/delete/:id', isLoginAdmin, adminOnly, PanelController.deleteProduct)
 
-//FRONT END
+// FRONT END //
+// GENERAL CONTROLLER
 router.get('/', GeneralController.home)
 router.get('/menus', GeneralController.menus)
 router.get('/contact', GeneralController.contact)
-router.get('/admin/login', UserController.loginPage)
-router.post('/admin/login', UserController.doLogin)
-router.get('/admin/logout', UserController.doLogout)
 
 module.exports = router
