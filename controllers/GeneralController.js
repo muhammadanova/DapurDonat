@@ -1,6 +1,7 @@
 const { User, Product, Order, Cart } = require('../models')
 var id_transaksi = 0
 const transporter = require('../helpers/configMail')
+const convertIDR = require('../helpers/convertIDR')
 
 class GeneralController {
   static home(req, res){
@@ -63,7 +64,8 @@ class GeneralController {
           userCart.Carts.map(el => {
             totalPrice += el.Product.price * el.quantity
           })
-          res.render('frontend/carts/listcart', { userCart, totalPrice })
+          let converterIDR = convertIDR(totalPrice)
+          res.render('frontend/carts/listcart', { userCart, totalPrice : converterIDR })
         }else{
           res.redirect('/')
         }
