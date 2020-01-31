@@ -51,16 +51,16 @@
           </table>
           <div class="left">
             <a href="/menus" class="btn btn-primary">Lanjutkan Belanja</a>
-            <form action="/order" method="POST">
+            <form action="/order" method="POST" class="mt-5">
               <div class="form-group">
                 <label>Alamat Pengiriman</label>
-                <textarea name="address" class="form-control" style="resize:none;" rows="5" placeholder="Alamat"></textarea>
+                <textarea name="address" class="form-control" style="resize:none;width:500px;" rows="5" placeholder="Alamat"></textarea>
               </div>
           </div>
           <div class="right">
             <h4>TOTAL HARGA</h4>
-            <h2><%= convertIDR(totalPrice) %></h2>
-            <button type="submit" class="btn btn-success btn-pembayaran">Ke Pembayaran</button>
+            <h2 style="font-weight:bold;"><%= convertIDR(totalPrice) %></h2>
+            <button type="submit" class="btn btn-success btn-pembayaran mt-3">Ke Pembayaran</button>
             </form>
           </div>
         </div>
