@@ -31,7 +31,7 @@
                   <td><%= index+=1 %></td>
                   <td><img src="/<%= el.images_product %>" class="img-product"></td>
                   <td><%= el.name %></td>
-                  <td><%= el.price %></td>
+                  <td><%= convertIDR(el.price) %></td>
                   <td><%= el.rating %></td>
                   <td>
                     <a href="/admin/product/edit/<%= el.id %>" class="btn btn-warning"><i class="fa fa-pencil"></i>&nbsp;Edit</a>

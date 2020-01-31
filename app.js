@@ -18,6 +18,7 @@ app.use(session({
 }))
 app.set('view engine', 'ejs')
 app.locals.moment = require('moment')
+app.locals.convertIDR = require('./helpers/convertIDR')
 app.locals.user = null
 
 app.use(router)

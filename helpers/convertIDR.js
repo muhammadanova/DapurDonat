@@ -10,3 +10,5 @@ function convertIDR(str){
   }
   return `Rp. ${resultPrice}`
 }
+
+module.exports = convertIDR
