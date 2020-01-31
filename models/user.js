@@ -54,7 +54,12 @@ module.exports = (sequelize, DataTypes) => {
         var salt = bcrypt.genSaltSync(saltRounds);
         var hash = bcrypt.hashSync(user.password, salt);
         user.password = hash
-      }
+      },
+      beforeUpdate:(user, options) => {
+        var salt = bcrypt.genSaltSync(saltRounds);
+        var hash = bcrypt.hashSync(user.password, salt);
+        user.password = hash
+      },
     },
     sequelize
   })

@@ -270,7 +270,8 @@ class GeneralController {
       {
         where:{
           email: req.params.email
-        }
+        },
+        individualHooks: true
       })
       .then(result=>{
         res.redirect('/')
